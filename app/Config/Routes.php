@@ -1,3 +1,7 @@
+// Tambahkan custom route agar tidak hilang saat update
+if (file_exists(APPPATH . 'Config/RoutesCustom.php')) {
+require APPPATH . 'Config/RoutesCustom.php';
+}
 
 <?php
 
