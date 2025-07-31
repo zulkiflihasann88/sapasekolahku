@@ -283,7 +283,15 @@
         updateProgress = 0;
         updateProgressBar(20, 'Membuat backup...');
 
-        $.post('<?= site_url('system-update/perform-update') ?>', function(data) {
+
+        // Ambil CSRF token dari meta tag atau hidden input
+        let csrfName = '<?= csrf_token() ?>';
+        let csrfHash = '<?= csrf_hash() ?>';
+
+        let postData = {};
+        postData[csrfName] = csrfHash;
+
+        $.post('<?= site_url('system-update/perform-update') ?>', postData, function(data) {
             if (data.success) {
                 updateProgressBar(100, 'Update selesai!');
                 setTimeout(() => {
