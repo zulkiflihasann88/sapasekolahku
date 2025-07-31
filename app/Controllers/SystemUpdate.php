@@ -474,9 +474,12 @@ class SystemUpdate extends Controller
         // Stash any local changes
         shell_exec('cd ' . ROOTPATH . ' && git stash 2>&1');
 
-        // Pull latest changes
-        // Paksa gunakan branch master karena branch yang aktif adalah master
-        $output = shell_exec('cd ' . ROOTPATH . ' && git pull origin master --no-rebase 2>&1');
+        // Pull latest changes sesuai branch dari konfigurasi
+        $branch = $this->branchName;
+        if (empty($branch)) {
+            $branch = 'main'; // fallback default
+        }
+        $output = shell_exec('cd ' . ROOTPATH . ' && git pull origin ' . escapeshellarg($branch) . ' --no-rebase 2>&1');
 
         if (strpos($output, 'error') !== false || strpos($output, 'fatal') !== false) {
             throw new \Exception('Git pull failed: ' . $output);
