@@ -145,7 +145,7 @@ class SystemUpdate extends Controller
         ]);
     }
 
-    public function performUpdate()
+    public function perform_update()
     {
         try {
             // 1. Validasi prerequisite

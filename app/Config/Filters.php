@@ -84,6 +84,7 @@ class Filters extends BaseFilters
                     'wa_gateway/testConnection', // Disable CSRF for WA Gateway test connection
                     'semester-management/switch-tahun-ajaran-process', // Allow form submission for switching tahun ajaran
                     'wali_kelas/datatables', // Allow DataTables Ajax request without CSRF
+                    'system-update/perform-update', // Allow System Update AJAX POST tanpa CSRF
                 ]
             ],
             'isLoggedIn' => [
