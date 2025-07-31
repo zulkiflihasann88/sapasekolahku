@@ -78,8 +78,18 @@ class Siswa extends ResourceController
                 ->get()->getResult();
 
             foreach ($rombel_list as $rombel) {
-                $key = $rombel->kelas . '|' . $rombel->rombel;
-                $label = $rombel->kelas . ' - ' . $rombel->rombel;
+                $kelas = trim($rombel->kelas);
+                $rombelVal = trim($rombel->rombel);
+                $key = $kelas . '|' . $rombelVal;
+                // Jika rombel kosong atau null, label hanya kelas
+                if ($rombelVal === '' || $rombelVal === null) {
+                    $label = $kelas;
+                } else if (strcasecmp($kelas, $rombelVal) === 0) {
+                    // Jika kelas dan rombel sama (case-insensitive), label hanya kelas
+                    $label = $kelas;
+                } else {
+                    $label = $kelas . ' - ' . $rombelVal;
+                }
                 $daftar_kelas[$key] = $label;
             }
         }
