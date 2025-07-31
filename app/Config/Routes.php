@@ -267,4 +267,4 @@ $routes->get('system-update', 'SystemUpdate::index');
 $routes->get('system-update/check-update', 'SystemUpdate::checkUpdate');
 $routes->get('system-update/test-connection', 'SystemUpdate::testConnection');
 $routes->get('system-update/get-update-log', 'SystemUpdate::getUpdateLog');
-$routes->post('system-update/perform-update', 'SystemUpdate::perform_update');
+$routes->post('system-update/perform-update', 'SystemUpdate::performUpdate');
