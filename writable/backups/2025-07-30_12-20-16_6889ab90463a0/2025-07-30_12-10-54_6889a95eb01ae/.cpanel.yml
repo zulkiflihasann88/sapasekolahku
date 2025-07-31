@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export COMPOSER_ALLOW_SUPERUSER=1
+    - /opt/cpanel/ea-php81/root/usr/bin/php composer.phar install --no-dev || composer install --no-dev
+    - php spark cache:clear

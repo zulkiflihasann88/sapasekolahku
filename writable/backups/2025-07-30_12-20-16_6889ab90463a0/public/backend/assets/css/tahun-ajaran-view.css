@@ -1,0 +1,126 @@
+/* Styling untuk indikator tahun ajaran yang sedang dilihat */
+.viewing-different-year-alert {
+  margin-left: 20px;
+  font-size: 0.9rem;
+  max-width: 550px;
+}
+
+.viewing-different-year-alert .btn-sm {
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Container for the viewing alert */
+.viewing-different-year-alert .viewing-alert-container {
+  background: linear-gradient(135deg, #f4a236 0%, #ffc107 100%);
+  border-left: 4px solid #e67e22;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+}
+
+/* Highlight for semester and tahun ajaran text */
+.viewing-different-year-alert .highlight-text {
+  font-weight: 700;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin: 0 3px;
+}
+
+/* Badge untuk tahun ajaran yang sedang dilihat */
+.badge-tahun-ajaran-view {
+  background-color: #ff9800;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+/* Styles for tahun ajaran indicator component */
+.tahun-ajaran-indicator .viewing-alert-container {
+  background: linear-gradient(135deg, #f4a236 0%, #ffc107 100%);
+  border-left: 4px solid #e67e22;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 12px 20px;
+}
+
+.tahun-ajaran-indicator .active-tahun-container {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-left: 4px solid #1cc88a;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  padding: 12px 20px;
+}
+
+.tahun-ajaran-indicator .highlight-text {
+  font-weight: 700;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin: 0 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Style untuk halaman switch tahun ajaran */
+.tahun-ajaran-card {
+  border-left: 4px solid #4e73df;
+  transition: all 0.2s;
+}
+
+.tahun-ajaran-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tahun-ajaran-card.active {
+  border-left-color: #1cc88a;
+}
+
+.tahun-ajaran-card.active .card-header {
+  background-color: #1cc88a;
+  color: white;
+}
+
+.tahun-ajaran-card.viewing {
+  border-left-color: #f6c23e;
+}
+
+.tahun-ajaran-card.viewing .card-header {
+  background-color: #f6c23e;
+  color: white;
+}
+
+/* Responsive adjustments for tahun ajaran indicator */
+@media (max-width: 768px) {
+  .tahun-ajaran-indicator .viewing-alert-container,
+  .tahun-ajaran-indicator .active-tahun-container {
+    padding: 10px 15px;
+  }
+
+  .tahun-ajaran-indicator .highlight-text {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+
+  .tahun-ajaran-indicator .btn-sm {
+    margin-top: 8px;
+  }
+
+  /* Improved full-width button on very small screens */
+  @media (max-width: 576px) {
+    .tahun-ajaran-indicator .btn-sm {
+      width: 100%;
+      margin-left: 0 !important;
+      margin-top: 10px;
+    }
+  }
+}
