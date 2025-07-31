@@ -75,9 +75,6 @@
                                 <a href="#" class="btn btn-sm btn-warning waves-effect waves-light bg-gradient" data-bs-toggle="modal" data-bs-target="#importExcelModal">
                                     <i class="far fa-file-excel"></i> Import Excel
                                 </a>
-                                <a href="<?= site_url('peserta_didik/batchGenerateNISForClass1Students') ?>" class="btn btn-sm btn-primary waves-effect waves-light bg-gradient" onclick="return confirm('Yakin ingin membuat NIS untuk semua siswa kelas 1 yang belum memiliki NIS?')">
-                                    <i class="fas fa-id-card"></i> Generate NIS Kelas 1
-                                </a>
                                 <a href="<?= site_url('peserta_didik/exportPdf') ?>" class="btn btn-sm btn-info waves-effect waves-light bg-gradient">
                                     <i class="fas fa-graduation-cap"></i> Luluskan
                                 </a>

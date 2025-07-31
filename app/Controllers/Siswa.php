@@ -78,8 +78,9 @@ class Siswa extends ResourceController
                 ->get()->getResult();
 
             foreach ($rombel_list as $rombel) {
-                $key = $rombel->kelas . ' - ' . $rombel->rombel;
-                $daftar_kelas[$key] = $key;
+                $key = $rombel->kelas . '|' . $rombel->rombel;
+                $label = $rombel->kelas . ' - ' . $rombel->rombel;
+                $daftar_kelas[$key] = $label;
             }
         }
 
