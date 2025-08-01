@@ -479,7 +479,7 @@ class SystemUpdate extends Controller
         if (empty($branch)) {
             $branch = 'main'; // fallback default
         }
-        $output = shell_exec('cd ' . ROOTPATH . ' && git pull --no-rebase origin ' . \escapeshellarg($branch) . ' 2>&1');
+        $output = shell_exec('cd ' . ROOTPATH . ' && git pull --no-rebase --allow-unrelated-histories origin ' . \escapeshellarg($branch) . ' 2>&1');
 
         if (strpos($output, 'error') !== false || strpos($output, 'fatal') !== false) {
             throw new \Exception('Git pull failed: ' . $output);
@@ -505,6 +505,8 @@ class SystemUpdate extends Controller
         $cacheDir = WRITEPATH . 'cache/';
         if (is_dir($cacheDir)) {
             $this->deleteDirectory($cacheDir);
+        }
+        if (!is_dir($cacheDir)) {
             mkdir($cacheDir, 0755, true);
         }
 
@@ -512,6 +514,8 @@ class SystemUpdate extends Controller
         $debugbarDir = WRITEPATH . 'debugbar/';
         if (is_dir($debugbarDir)) {
             $this->deleteDirectory($debugbarDir);
+        }
+        if (!is_dir($debugbarDir)) {
             mkdir($debugbarDir, 0755, true);
         }
 
@@ -641,7 +645,9 @@ class SystemUpdate extends Controller
     private function copyDirectory($src, $dst, $exclude = [])
     {
         $dir = opendir($src);
-        @mkdir($dst);
+        if (!is_dir($dst)) {
+            @mkdir($dst);
+        }
 
         while (($file = readdir($dir)) !== false) {
             if ($file != '.' && $file != '..' && !in_array($file, $exclude)) {

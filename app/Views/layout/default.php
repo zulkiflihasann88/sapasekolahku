@@ -314,6 +314,14 @@
               <script>
                 document.write(new Date().getFullYear())
               </script> © Sapa Sekolahku.
+              <?php
+              $ver = '-';
+              $verFile = FCPATH . 'version.txt';
+              if (file_exists($verFile)) {
+                $ver = trim(file_get_contents($verFile));
+              }
+              ?>
+              <span class="text-muted ms-2">ver. <?= htmlspecialchars($ver) ?></span>
             </div>
             <div class="col-sm-6">
               <div class="text-sm-end d-none d-sm-block">
