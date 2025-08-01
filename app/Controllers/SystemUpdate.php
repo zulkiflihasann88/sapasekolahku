@@ -479,7 +479,7 @@ class SystemUpdate extends Controller
         if (empty($branch)) {
             $branch = 'main'; // fallback default
         }
-        $output = shell_exec('cd ' . ROOTPATH . ' && git pull origin ' . \escapeshellarg($branch) . ' --no-rebase 2>&1');
+        $output = shell_exec('cd ' . ROOTPATH . ' && git pull --no-rebase origin ' . \escapeshellarg($branch) . ' 2>&1');
 
         if (strpos($output, 'error') !== false || strpos($output, 'fatal') !== false) {
             throw new \Exception('Git pull failed: ' . $output);

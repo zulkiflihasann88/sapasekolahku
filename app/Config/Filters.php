@@ -106,7 +106,7 @@ class Filters extends BaseFilters
             'wa_gateway/saveConfig',
             'wa_gateway/testConnection',
             'semester-management/switch-tahun-ajaran-process',
-            'wali_kelas/datatables',
+            'wali_kelas/datatables'
         ];
         // Gabungkan dengan custom jika ada
         $customExcept = [];
