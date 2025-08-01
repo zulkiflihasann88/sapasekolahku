@@ -1,7 +1,3 @@
-// Tambahkan custom route agar tidak hilang saat update
-if (file_exists(APPPATH . 'Config/RoutesCustom.php')) {
-require APPPATH . 'Config/RoutesCustom.php';
-}
 
 <?php
 
@@ -272,3 +268,7 @@ $routes->get('system-update/check-update', 'SystemUpdate::checkUpdate');
 $routes->get('system-update/test-connection', 'SystemUpdate::testConnection');
 $routes->get('system-update/get-update-log', 'SystemUpdate::getUpdateLog');
 $routes->post('system-update/perform-update', 'SystemUpdate::performUpdate');
+// Tambahkan custom route agar tidak hilang saat update
+if (file_exists(APPPATH . 'Config/RoutesCustom.php')) {
+    require APPPATH . 'Config/RoutesCustom.php';
+}

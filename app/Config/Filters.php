@@ -74,18 +74,7 @@ class Filters extends BaseFilters
         'before' => [
             // 'honeypot',
             'csrf' => [
-                'except' => [
-                    'auth/loginProcess',
-                    'login',
-                    'auth/logout',
-                    'api/*', // API endpoints biasanya tidak menggunakan CSRF
-                    'akademik/*', // Temporarily disable CSRF for akademik routes
-                    'wa_gateway/saveConfig', // Disable CSRF for WA Gateway save config
-                    'wa_gateway/testConnection', // Disable CSRF for WA Gateway test connection
-                    'semester-management/switch-tahun-ajaran-process', // Allow form submission for switching tahun ajaran
-                    'wali_kelas/datatables', // Allow DataTables Ajax request without CSRF
-                    'system-update/perform-update', // Allow System Update AJAX POST tanpa CSRF
-                ]
+                'except' => [] // akan digabungkan di __construct
             ],
             'isLoggedIn' => [
                 'except' => [
@@ -103,6 +92,33 @@ class Filters extends BaseFilters
             // 'secureheaders',
         ],
     ];
+
+    public function __construct()
+    {
+        parent::__construct();
+        // Daftar pengecualian default
+        $defaultExcept = [
+            'auth/loginProcess',
+            'login',
+            'auth/logout',
+            'api/*',
+            'akademik/*',
+            'wa_gateway/saveConfig',
+            'wa_gateway/testConnection',
+            'semester-management/switch-tahun-ajaran-process',
+            'wali_kelas/datatables',
+        ];
+        // Gabungkan dengan custom jika ada
+        $customExcept = [];
+        $customFile = APPPATH . 'Config/FiltersCustom.php';
+        if (file_exists($customFile)) {
+            $custom = include $customFile;
+            if (isset($custom['csrf_except']) && is_array($custom['csrf_except'])) {
+                $customExcept = $custom['csrf_except'];
+            }
+        }
+        $this->globals['before']['csrf']['except'] = array_merge($defaultExcept, $customExcept);
+    }
 
     /**
      * List of filter aliases that works on a
